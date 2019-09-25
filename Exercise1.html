@@ -1,0 +1,31 @@
+
+<OL class="steps">
+
+<LI>In Github desktop, click "Fetch from Origin" to update your fork of <code>niqlow</code>.  Make sure the branch is switched to Develop.</LI>
+<LI>Read the draft of the paper here: https://ferrall.github.io/OODP/.  </LI>
+
+<LI>Copy LS*.* files from niqlow/examples to a new directory.</LI>
+
+<LI>Create a new file LSext.ox that starts like this:</LI>
+<dd><pre>
+#import "niqlow"
+#include "LS.ox"
+
+struct LSext : LS {
+    }
+</pre></dd>
+
+<LI> Follow the discussion in "Extensions" to add a schooling choice $s$, completed schooling $E$, female indicator and unobserved skill variable $z$ (don't include race to simplify). You will have to add "members" to LSext: new static variables to store the variables and new functions to modify the model.   
+    </LI>
+<LI>Add the <code>FeasibleActions()</code> function to <code>LSext</code> to impose the restriction in (12) on $A(\theta)$. [Option: add a condition that schooling is only a choice for the first two years of the lifecycle, which reduces the choice set and is consistent with the pattern that old people don't go to school.] </LI>
+<LI>Log earnings will now have the form:
+    $$\ln Earn = \beta_0 + \beta_1 Female + \beta_2 E + \beta_3 m + \beta_4 m^\2 + \beta_5 z + \beta_6e.$$</LI>
+<LI>Modify utility so that it takes the form:
+$$U = aEarn() + (1-a)[ (1-s)b + sd ].$$
+where $d$ is a new parameter, the net utility of attending school.</LI>
+<LI>Pick "reasonable" values of the new parameters in the $\beta$ vector and $d$</LI>
+
+<li>Copy <code>LS_main.ox</code> to <code>LSext_main.ox</code> and modify it so that it calls the extensions.  Keep debugging until you get prediction output. Note: <code>VISolve()</code> by default sends the value function to the screen.  If you call it as <code>VISolve(FALSE)</code> it won't do this to avoid the extra output. You'll want to do that because the state space is now much larger and you'll be running this over and over to find bugs.</li>
+    
+<LI>Try to follow the niqlow documentation to guide changes and fix bugs, but feel free to cut-and-paste cod
+</OL>
