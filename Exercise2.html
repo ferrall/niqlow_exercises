@@ -1,0 +1,49 @@
+<HTML>+++
+<HEAD>
+<link rel="stylesheet" href="../niqlow/oxdoc.css">
+<script type="text/x-mathjax-config"> MathJax.Hub.Config(
+    {tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]],processEscapes: true},
+    CommonHTML: {
+        scale : 100
+        },
+    TeX: {
+          packages: ['base','eplain'],
+          equationNumbers: {autoNumber:"all"} ,
+          Macros: {
+          l : "\\left",
+          r : "\\right",
+          th : "\\theta",
+          al : "\\alpha",
+          thp : "\\theta^{\\,\\prime}",
+          vv : "v\\l(\\alpha,\\theta\\r)",
+          vvz : "v_{\\zeta\,}\\l(\\alpha,\\theta\\r)",
+          st : "\\l(\\theta^{\\,\\prime};\\alpha,\\theta\\r)",
+          Pstar : "P^{\\star}\\l(\\alpha;\\theta\\r)",
+          Pstaraz : "P^\\star_{\\zeta\,}\\l(\\alpha;\\theta\\r)",
+          Pstarak : "P^\\star_{K\,}\\l(\\alpha;\\theta\\r)",
+          iidsim : "\\ {\\buildrel  iid \\over \\sim}\\ "
+           }
+    }});</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+  
+</HEAD>
+
+<BODY>
+<h1>Exercise 2</h1>
+<OL class="steps">
+
+<LI>Find (at least) 2 papers in your research area that includes discrete state / discrete choice dynamic programming <em>and</em> applies the model to external data in some way.  Start with papers most relevant to your current interests if you can.  Then move farther away if necessary.  Attempt to find fairly current work (even working papers).</LI>
+
+<LI>For each paper, create a summary of the model using <code>niqlow</code> concepts similar to the summaries in the OODP paper. List the clock, state variables, and actions. For each discrete quantity determine the number of values it takes on (sometimes these details are buried in footnotes or appendices. If the paper solves different problems based on different fixed agent characteristic, translate that into variables placed in $\gamma$.  Determine if feasible actions depend on $\theta$ and state the restrictions.  If the clock and that the state variables imply that not all states are reachable, describe the conditions that determine reachability. </LI>
+
+<li>Determine how the model is solved and see if the method is implemented in <code>niqlow</code> already. </li>
+
+<li>Explain how the model outcomes are related to data.  If parameters are estimated from data, try to determine if the procedure is already 
+
+<LI>List details about the language used, algorithms employed (for approximations, optimization, etc). </LI>
+
+</OL> 
+</BODY>
+
+</HTML>
