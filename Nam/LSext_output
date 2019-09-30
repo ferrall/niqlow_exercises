@@ -1,0 +1,15 @@
+--------------- niqlow at 20:50:29 on 29-Sep-2019 ---------------
+
+Ox Console version 8.02 (Windows_64/U) (C) J.A. Doornik, 1994-2018
+This version may be used for academic research and teaching only
+C:\Users\freek\Documents\GitHub\niqlow_exercises\Nam\LSext.ox (4): 'LS.ox' include file not found
+C:\Users\freek\Documents\GitHub\niqlow_exercises\Nam\LSext.ox (4): 'LS' class expected
+C:\Users\freek\Documents\GitHub\niqlow_exercises\Nam\LSext.ox (16): 'Initialize' undeclared identifier
+C:\Users\freek\Documents\GitHub\niqlow_exercises\Nam\LSext.ox (17): 'LS::Build' undeclared identifier
+C:\Users\freek\Documents\GitHub\niqlow_exercises\Nam\LSext.ox (20): 'GroupVariables' undeclared identifier
+C:\Users\freek\Documents\GitHub\niqlow_exercises\Nam\LSext.ox (23): 'Actions' undeclared identifier
+C:\Users\freek\Documents\GitHub\niqlow_exercises\Nam\LSext.ox (24): 'EndogenousStates' undeclared identifier
+C:\Users\freek\Documents\GitHub\niqlow_exercises\Nam\LSext.ox (25): 'ExogenousStates' undeclared identifier
+C:\Users\freek\Documents\GitHub\niqlow_exercises\Nam\LSext.ox (26): 'CreateSpaces' undeclared identifier
+
+niqlow reports errors: exit code= 1!!
