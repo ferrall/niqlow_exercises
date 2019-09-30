@@ -1,28 +1,32 @@
 					 #import "niqlow"
-#include "LS.ox"
+/* Nam:  since you moved this file you have to specify the path to  /niqlow/examples/LS.ox.  
+  It can be the full path or relative using ../ Replace ??? below */
+#include "???/niqlow/examples/LS.ox"      
 
 struct LSext : LS {
-static decl d,b,beta,a,m,e,s,g,k,sch, E, female, skill;
+
+static decl d,s,g,k,sch, E, female, skill;   //LSext "inherits" variables from LS
 Utility();
 	    static Build();
     static Run();
     static Earn();
     static Use();
-	static FeasibleActions();
-	static Reachable();
+	static FeasibleActions();  //this should not be static (tricky...hard to explain until you understand more
+	static Reachable(); 	//this should not be static either
     }
 
 LSext::Build(){
-Initialize(1.0,new LSext());
-LS::Build();
-female = new FixedEffect("g",2);
-skill= new RandomEffect("k",2);
-GroupVariables(skill,female);
-s = new BinaryChoice("s");
-E = new ActionCounter("sch",8,s);
-Actions(s);
-EndogenousStates(E);
-ExogenousStates(female,skill);
+	Initialize(1.0,new LSext());   //Use tabs to indent code so beginnin/end of functions clear
+	LS::Build();  		
+	female = new FixedEffect("g",2);
+	skill= new RandomEffect("k",2);
+	GroupVariables(skill,female);
+	s = new BinaryChoice("s");
+	E = new ActionCounter("sch",8,s);
+	Actions(s);  
+	EndogenousStates(E);  
+	//skill and female already added to GroupVariables.  Don't add twice
+
 CreateSpaces();
 }
 
