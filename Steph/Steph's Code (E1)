@@ -1,0 +1,67 @@
+#import "niqlow"
+#include "LS.ox"
+
+struct LSext : LS {
+	}
+
+class LSext : ExtremeValue {
+    static decl a, m, e, beta, b, s, E, female, skill;
+           Utility();
+    static Build(d=FALSE);
+    static Run();
+    static Earn();
+    static Use();
+    }
+
+LSext::Build() {
+	Initialize(1.0, new LSext());
+	LS::Build();
+	SetClock(NormalAging,40);
+	a =	new BinaryChoice("a");
+	m = new ActionCounter("m",40,a)
+	e = new Nvariable("e",15);
+	s = new BinaryChoice("att");
+	E = new ActionCounter("sch",8,s);
+    female = new FixedEffect("g",2);
+    skill = new RandomEffect("k",2);
+    GroupVariables(skill,female);
+	Actions(a,s);
+	EndogenousStates(m,E);
+	ExogenousStates(e);
+	SetDelta(0.95);
+	beta=<1.2;0.09;-0.1;0.2>
+	b=2.0;
+	d=-2.0;
+	CreateSpaces();
+}
+
+LS::Earn(){
+	decl x;
+	x = 1 ~CV(Female)~CV(E)~CV(m)~sqr(CV(m))~AV(e);
+	return exp(x*CV(beta));
+	}
+
+LS::Utility(){
+	return CV(a)*Earn()+(1-CV(a))*((1-cv(s))*b+cv(s)*b);
+	}
+	
+LS::Use() {
+    if (!Flags::ThetaCreated) Run();
+    SimulateOutcomes(2);
+    ComputePredictions();
+    }
+
+LSext::FeasibleActions(){
+	return !CV(a).*CV(s);
+	}
+	
+LSext::Reachable(){
+	return CV(E)+CV(m)<=I::t;
+	}
+
+LS::Run() {
+    Initialize(1.0,new LS());
+    Build();
+    CreateSpaces();
+    VISolve();
+    }
