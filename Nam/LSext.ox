@@ -37,7 +37,8 @@ return exp ( (  1 ~ AV(g) ~ CV(sch) ~ CV(m) ~ sqr(CV(m)) ~ AV(k) ~ AV(e) ) * CV(
 }
 
 LSext::Utility(){
-return a*Earn() + (1-a)*((1-s)*b+s*d);
+//  Remember, a and s are not numbers they are objects.  Need to get their current values
+return CV(a)*Earn() + (1-CV(a))*((1-CV(s))*b+CV(s)*d);
 }
 
 LSext::FeasibleActions(){
