@@ -1,18 +1,20 @@
-					 #import "niqlow"
+#import "niqlow"
 /* Nam:  since you moved this file you have to specify the path to  /niqlow/examples/LS.ox.  
   It can be the full path or relative using ../ Replace ??? below */
-#include "???/niqlow/examples/LS.ox"      
+  #include "C:/Users/freek/Documents/GitHub/niqlow/examples/LS.ox"
+
+// #include "C:\Users\freek\Documents\GitHub\niqlow\examples\LS.ox"  
 
 struct LSext : LS {
 
 static decl d,s,g,k,sch, E, female, skill;   //LSext "inherits" variables from LS
-Utility();
+		Utility();
 	    static Build();
     static Run();
     static Earn();
     static Use();
-	static FeasibleActions();  //this should not be static (tricky...hard to explain until you understand more
-	static Reachable(); 	//this should not be static either
+	 FeasibleActions();  //this should not be static (tricky...hard to explain until you understand more
+	 Reachable(); 	//this should not be static either
     }
 
 LSext::Build(){
@@ -46,15 +48,19 @@ LSext::Reachable(){
 return CV(E)+CV(m) <= I::t;
 }
 
-LSext::Run() {
+LSext::Run() { 
     Build();
     beta = <0.8;-0.2;1.2;1.0;-0.1;0.2>;							  
     b = 2;												 
 	d = 0.2;
-    VISolve(FALSE);
+    VISolve();
     }	
 
-
+LSext::Use() {
+    if (!Flags::ThetaCreated) Run();
+    SimulateOutcomes(2);
+    ComputePredictions();
+    }
 
 
 
