@@ -7,7 +7,7 @@
 
 struct LSext : LS {
 
-static decl d,s,g,k,sch, E, female, skill;   //LSext "inherits" variables from LS
+static decl d,s,g,k,sch, E, female, skill, p, cost;   //LSext "inherits" variables from LS
 		Utility();
 	    static Build();
     static Run();
@@ -18,49 +18,55 @@ static decl d,s,g,k,sch, E, female, skill;   //LSext "inherits" variables from L
     }
 
 LSext::Build(){
-	Initialize(1.0,new LSext());   //Use tabs to indent code so beginnin/end of functions clear
+	Initialize(8,new LSext());   //Use tabs to indent code so beginnin/end of functions clear
 	LS::Build();  		
 	female = new FixedEffect("g",2);
 	skill= new RandomEffect("k",2);
+	p = new LaggedAction("p",a);
 	GroupVariables(skill,female);
 	s = new BinaryChoice("s");
 	E = new ActionCounter("sch",8,s);
 	Actions(s);  
-	EndogenousStates(E);  
+	EndogenousStates(E);
 	//skill and female already added to GroupVariables.  Don't add twice
 
 CreateSpaces();
 }
 
 LSext::Earn(){
-return exp ( (  1 ~ AV(g) ~ CV(sch) ~ CV(m) ~ sqr(CV(m)) ~ AV(k) ~ AV(e) ) * CV(b)  );
+return exp ( (  1 ~ AV(g) ~ CV(sch) ~ CV(m) ~ sqr(CV(m)) ~ AV(k) ~ AV(e) ) * CV(beta)  );
 }
 
 LSext::Utility(){
 //  Remember, a and s are not numbers they are objects.  Need to get their current values
-return CV(a)*Earn() + (1-CV(a))*((1-CV(s))*b+CV(s)*d);
+
+decl u= CV(a)*Earn() + (1-CV(a)).*((1-CV(s))*b+CV(s)*d + CV(p)*cost*CV(s) );
+//println(u);
+return u;
 }
 
 LSext::FeasibleActions(){
-return ! CV(a).*CV(s);
+return ! (CV(a).*CV(s));
 }
 
 LSext::Reachable(){
-return CV(E)+CV(m) <= I::t;
+return ( CV(E)+CV(m) <= I::t );
 }
 
 LSext::Run() { 
     Build();
-    beta = <0.8;-0.2;1.2;1.0;-0.1;0.2>;							  
+    // beta = 1|zeros(6,1);//<1;0.8;-0.2;1.2;1.0;-0.1;0.2>;
+	beta = 	<1;-2;1.2;2.5;1.5;-0.5;0.7>; 
     b = 2;												 
-	d = 0.2;
+	d = 5;
+	cost = -100; 
     VISolve();
     }	
 
 LSext::Use() {
     if (!Flags::ThetaCreated) Run();
-    SimulateOutcomes(2);
-    ComputePredictions();
+   SimulateOutcomes(2);
+   ComputePredictions();
     }
 
 
