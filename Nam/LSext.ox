@@ -40,7 +40,7 @@ return exp ( (  1 ~ AV(g) ~ CV(sch) ~ CV(m) ~ sqr(CV(m)) ~ AV(k) ~ AV(e) ) * CV(
 LSext::Utility(){
 //  Remember, a and s are not numbers they are objects.  Need to get their current values
 
-decl u= CV(a)*Earn() + (1-CV(a)).*((1-CV(s))*b+CV(s)*d + CV(p)*cost*CV(s) );
+decl u= CV(a)*Earn() + (1-CV(a)).*((1-CV(s))*b+CV(s)*d + (1-CV(p))*cost*CV(s) );  // try: if not go work, get b, 
 //println(u);
 return u;
 }
@@ -56,11 +56,11 @@ return ( CV(E)+CV(m) <= I::t );
 LSext::Run() { 
     Build();
     // beta = 1|zeros(6,1);//<1;0.8;-0.2;1.2;1.0;-0.1;0.2>;
-	beta = 	<1;-2;1.2;2.5;1.5;-0.5;0.7>; 
+	beta = 	<1;-2;1.2;2.5;-1.5;-1;2>; 
     b = 2;												 
 	d = 5;
-	cost = -100; 
-    VISolve();
+	cost = -1; 
+    VISolve(FALSE);
     }	
 
 LSext::Use() {
