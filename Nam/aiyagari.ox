@@ -12,34 +12,29 @@ class Aiyagari : Bellman {
 }
 
 Aiyagari::Build() {
-SetClock(NormalAging,3);
-Actions(a = new ActionVariable("a",Z));
-e = new Tauchen("e",N,M,mu,sig,rho);
-A = new LiquidAsset ( "A" , Z , a )	;
-a -> SetActual(agrid);				/* grid point on asset */
-A -> SetActual(agrid);
-EndogenousStates(e,A);
+	SetClock(Ergodic);
+	Actions(a = new ActionVariable("a",Z));
+	e = new Tauchen("e",N,M,mu,sig,rho);
+	e->Update();
+	A = new LiquidAsset ( "A" , Z , a )	;
+	a -> SetActual(agrid);				/* grid point on asset */
+	A -> SetActual(agrid);
+	EndogenousStates(e,A);
     SetDelta(0.95);
 }
 
 Aiyagari::FeasibleActions(){
-//println("*** ",CV(a),a.actual," ",AV(A)*(1+r)," ",Earn());
-//return a.actual .<= AV(A)*(1+r) + Earn();
-return AV(a) .<= AV(A)*(1+r) + Earn();
-}
+	return AV(a) .< AV(A)*(1+r) + Earn();
+	}
 
 Aiyagari::Earn(){
-return w*exp(AV(e));
-}
+	return w*exp(AV(e));
+	}
 
 Aiyagari::Utility(){
- decl u =  ( AV(A)*(1+r) + Earn() - AV(a) ).^(1 - sigma) / (1 - sigma) ;
- if (I::t==2 && CV(e)==0 && CV(A)==	3)
- 	println(AV(A)," ",AV(e)," ",Earn()," ",AV(a)',(AV(A)*(1+r) + Earn() - AV(a))',u');
-// println(AV(e)');
-// println(u);
-return u; 					/*Sub out consumption from budget constraint*/ 
-}
+ 	decl u =  ( AV(A)*(1+r) + Earn() - AV(a) ).^(1 - sigma) / (1 - sigma) ;
+	return u; 					/*Sub out consumption from budget constraint*/ 
+	}
 
 Aiyagari::Run(){ 
 M = 2;
