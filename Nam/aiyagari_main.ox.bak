@@ -4,6 +4,5 @@
 
 main() {
 //    HTopen("../../OODP/LS");
-    LSext::Run();
-	LSext::Use();
+    Aiyagari::Run();
     }
