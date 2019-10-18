@@ -1,0 +1,22 @@
+# Backups
+*.bak
+*.sav
+*.log
+
+# Projects
+*.~
+*.prj
+*.oxp
+
+# Binaries
+#*.oxo
+*.chkpt
+
+# Document
+#*.html
+#*.optobj
+
+# Presentation
+test/
+
+Thumbs.db
