@@ -13,7 +13,6 @@ class Aiyagari : Bellman {
 
 Aiyagari::Build() {
 	SetClock(Ergodic);
-	StorePalpha();
 	Actions(a = new ActionVariable("a",Z));
 	e = new Tauchen("e",N,M,mu,sig,rho);
 	e->Update();								/* from Christ, need to update Tauchen variable */   							
@@ -22,9 +21,6 @@ Aiyagari::Build() {
 	A -> SetActual(agrid);
 	EndogenousStates(e,A);
     SetDelta(0.95);
-	decl EMax = new ValueIteration(0);
-	EMax -> Solve();
-	I::curg->StationaryDistribution();
 }
 
 Aiyagari::FeasibleActions(){
@@ -51,9 +47,13 @@ Aiyagari::Run(){
 	w = 2;
 	sigma = 2; 										/* CRRA parameter */
 	Initialize(new Aiyagari());					
-	Build();									  
+	Build();
+	StorePalpha();
 	CreateSpaces();
 	VISolve();
+	decl EMax = new ValueIteration(0);
+	EMax -> Solve();
+	I::curg->StationaryDistribution();
 	println("Ergodic distribution: ",I::curg.Pinfinity');
 }
 
