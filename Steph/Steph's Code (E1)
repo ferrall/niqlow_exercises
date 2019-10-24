@@ -1,13 +1,13 @@
 #import "niqlow"
-#include "LS.ox"
+#include "???/LS.ox"
+//Since LSext has moved you have to provide a path back to niqlow/examples.  replace ??? with absolute or relative path
+/* struct LSext : LS {   Yes, define LSext as derived from LS, but include new/changed elements.
+	} */ 
 
-struct LSext : LS {
-	}
-
-class LSext : ExtremeValue {
-    static decl a, m, e, beta, b, s, E, female, skill;
+class LSext : LS {  //can only define a class once
+    static decl s, E, female, skill;  // a, m, e, beta, b, These available from LS, no need to create new space
            Utility();
-    static Build(d=FALSE);
+    static Build();  //d=FALSE, your build doesn't need this
     static Run();
     static Earn();
     static Use();
@@ -16,32 +16,26 @@ class LSext : ExtremeValue {
 LSext::Build() {
 	Initialize(1.0, new LSext());
 	LS::Build();
-	SetClock(NormalAging,40);
-	a =	new BinaryChoice("a");
-	m = new ActionCounter("m",40,a)
-	e = new Nvariable("e",15);
+//deleted code that repeats what is in LS::Build()
 	s = new BinaryChoice("att");
 	E = new ActionCounter("sch",8,s);
     female = new FixedEffect("g",2);
     skill = new RandomEffect("k",2);
     GroupVariables(skill,female);
-	Actions(a,s);
-	EndogenousStates(m,E);
-	ExogenousStates(e);
-	SetDelta(0.95);
+	Actions(s);  //a was added in LS::Build
 	beta=<1.2;0.09;-0.1;0.2>
 	b=2.0;
 	d=-2.0;
 	CreateSpaces();
 }
 
-LS::Earn(){
+LSext::Earn(){
 	decl x;
 	x = 1 ~CV(Female)~CV(E)~CV(m)~sqr(CV(m))~AV(e);
 	return exp(x*CV(beta));
 	}
 
-LS::Utility(){
+LSext::Utility(){
 	return CV(a)*Earn()+(1-CV(a))*((1-cv(s))*b+cv(s)*b);
 	}
 	
