@@ -1,8 +1,8 @@
 #import "niqlow"
    
-class Aiyagari : Bellman {
-	static const decl agrid = <-2;0;2;4;6;8;10>;/*grid point on asset */ 
-	static decl a, A, e, beta, sig, mu, M, N, rho, Z, E, r, w, sigma;  
+class Aiyagari : ExtremeValue {
+	static const decl agrid = <0;1;2;4;6;8;10>;/*grid point on asset */ 
+	static decl a, A, e, beta, sig, mu, M, N, rho, Z, E, r, w, sigma, pred, vi;  
     Utility();			
     static Build();
     static Run();
@@ -46,7 +46,7 @@ Aiyagari::Run(){
 	r = 0.3;
 	w = 2;
 	sigma = 2; 										/* CRRA parameter */
-	Initialize(new Aiyagari());					
+	Initialize(20.0, new Aiyagari());					
 	Build();
 	StorePalpha();
 	CreateSpaces();
@@ -54,6 +54,10 @@ Aiyagari::Run(){
 	decl EMax = new ValueIteration(0);
 	EMax -> Solve();
 	I::curg->StationaryDistribution();
-	println("Ergodic distribution: ",I::curg.Pinfinity');
+	println("Ergodic distribution: ",I::curg.Pinfinity);
+	vi = new ValueIteration();
+	pred = new PathPrediction(0,"agg",vi,ErgodicDist);  //ErgodicDist means use it as initial dist
+	pred->Tracking(TrackAll);
+	pred -> Predict(40,Two);  // only need 1 prediction(long run), Two means print out
 }
 
