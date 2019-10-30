@@ -1,0 +1,9 @@
+#include "LSext.ox"
+
+main() {
+ //   HTopen("../../OODP/LSext");
+   decl z = new LSext();
+   z.y = 5;
+    LSext::Run();
+    LSext::Use();
+    }
