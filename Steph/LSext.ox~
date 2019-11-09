@@ -4,7 +4,6 @@
 
 struct LSext : LS {  
     static decl s, E, female, skill, d;
-	decl y;
            Utility();
     static Build(); 
     static Run();
