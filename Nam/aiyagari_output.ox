@@ -1,59 +1,139 @@
-#import "niqlow"
-   
-class Aiyagari : Bellman {
-	static const decl agrid = <-2;0;2;4;6;8;10>;/*grid point on asset */ 
-	static decl a, A, e, beta, sig, mu, M, N, rho, Z, E, r, w, sigma;  
-    Utility();			
-    static Build();
-    static Run();
-    static Earn();
-    static Use();
-	FeasibleActions(); 
-}
+--------------- niqlow at 10:47:38 on 09-Nov-2019 ---------------
 
-Aiyagari::Build() {
-	SetClock(Ergodic);
-	Actions(a = new ActionVariable("a",Z));
-	e = new Tauchen("e",N,M,mu,sig,rho);
-	e->Update();								/* from Christ, need to update Tauchen variable */   							
-	A = new LiquidAsset ( "A" , Z , a )	;
-	a -> SetActual(agrid);						
-	A -> SetActual(agrid);
-	EndogenousStates(e,A);
-    SetDelta(0.95);
-}
+Ox Console version 8.02 (Windows_64/U) (C) J.A. Doornik, 1994-2018
+This version may be used for academic research and teaching only
 
-Aiyagari::FeasibleActions(){
-	return a.actual .<= AV(A)*(1+r) + Earn();
-	}
+ niqlow version 4.00. Copyright (C) 2011-2018 Christopher Ferrall.
+Execution of niqlow implies acceptance of its free software License (niqlow/niqlow-license.txt).
+Log file directory: '.'. Time stamp: -9-11-2019-10-47-38.
 
-Aiyagari::Earn(){
-	return w*exp(AV(e));
-	}
+DP::Intialize is complete. Action and State spaces are empty.
+ Log file name is: ./DP-DDP-9-11-2019-10-47-38.log
+Tauchen Transition Matrix. column is current, row is trans. prob. 
+      0.00000      0.00000      0.00000      0.00000      0.00000
+      0.00000      0.00000      0.00000      0.00000      0.00000
+      0.00000      0.00000      0.00000      0.00000      0.00000
+      0.00000      0.00000      0.00000      0.00000      0.00000
+      0.00000      0.00000      0.00000      0.00000      0.00000
+Setting Actual Values of a
+index              0.00000       1.0000       2.0000       3.0000       4.0000       5.0000       6.0000
+actual             0.00000       1.0000       2.0000       4.0000       6.0000       8.0000       10.000
+Setting Actual Values of A
+index              0.00000       1.0000       2.0000       3.0000       4.0000       5.0000       6.0000
+actual             0.00000       1.0000       2.0000       4.0000       6.0000       8.0000       10.000
+-------------------- DP Model Summary ------------------------
+0. USER BELLMAN CLASS
+    Aiyagari
+1. CLOCK
+    1. Ergodic
+2. STATE VARIABLES
+              |eps   |eta |theta        -clock        |gamma
+              s11    s21      e      A      t     t'      r      f
+       s.N      1      1      5      7      1      1      1      1
 
-Aiyagari::Utility(){
- 	decl u =  ( AV(A)*(1+r) + Earn() - AV(a) ).^(1 - sigma) / (1 - sigma) ;
-	return u; 									/*Sub out consumption from budget constraint*/ 
-	}
 
-Aiyagari::Run(){ 
-	M = 2;
-	N = 5;											/* grid on labour shock */ 
-	mu = 0;	 										/* mean on AR shock */ 
-	sig = 0.2; 										/* std on AR shock */
-	rho = 0.9; 										/* persistence of AR shock */ 
-	Z = 7;  										/* number grid on asset */
-	r = 0.3;
-	w = 2;
-	sigma = 2; 										/* CRRA parameter */
-	Initialize(new Aiyagari());					
-	Build();
-	StorePalpha();
-	CreateSpaces();
-	VISolve();
-	decl EMax = new ValueIteration(0);
-	EMax -> Solve();
-	I::curg->StationaryDistribution();
-	println("Ergodic distribution: ",I::curg.Pinfinity');
-}
+     Transition Categories (not counting placeholders and variables with N=1)
+                 NonRandom       Random   Coevolving    Augmented       Timing    Invariant
+     #Vars               0            2            0            0            0            0
 
+3. SIZE OF SPACES
+
+                       Number of Points
+    Exogenous(Epsilon)                1
+    SemiExogenous(Eta)                1
+   Endogenous(Theta_t)               35
+                 Times                1
+         EV()Iterating               35
+      ChoiceProb.track               35
+         Random Groups                1
+ Dynamic Random Groups                1
+          Fixed Groups                1
+   Total Groups(Gamma)                1
+       Total Untrimmed               35
+
+4. ACTION VARIABLES
+   Number of Distinct action vectors: 7
+             a
+    a.N      7
+
+
+5. TRIMMING AND SUBSAMPLING OF THE ENDOGENOUS STATE SPACE (Theta)
+                           N
+    TotalReachable        35
+         Terminal          0
+     Approximated          0
+
+  Index of first state by t (t=0..T-1)
+      0     35
+
+
+6. FEASIBLE ACTION SETS
+ 
+     i    [a]        A[0]     A[1]     A[2]     A[3]     A[4]   
+     ---------------------------------------------------------------
+     000 (0)           X        X        X        X        X        
+     001 (1)           X        X        X        X        X        
+     002 (2)           X        X        X        X        X        
+     003 (3)           X        X        X        X        -        
+     004 (4)           X        X        X        -        -        
+     005 (5)           X        X        -        -        -        
+     006 (6)           X        -        -        -        -        
+        #States       27        2        2        2        2
+     --------------------------------------------------------------
+         Key: X = row vector is feasible. - = infeasible
+
+-------------------- End of Model Summary ------------------------
+
+     Value of States and Choice Probabilities
+     ------------------------------------------------------------------------------
+    Indx   T   A   e   A   t     r     f       EV      |Choice Probabilities:                                                      
+      34   1   0   4   6   0     0     0      30.244551 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000
+      33   1   0   3   6   0     0     0      29.919594 0.000000 0.306377 0.635583 0.006525 0.051515 0.000000 0.000000
+      32   1   0   2   6   0     0     0      29.355463 0.999806 0.000192 0.000000 0.000000 0.000003 0.000000 0.000000
+      31   1   0   1   6   0     0     0      29.438012 1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+      30   1   0   0   6   0     0     0      30.013977 1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+      29   1   0   4   5   0     0     0      30.232435 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000
+      28   1   0   3   5   0     0     0      29.903603 0.000000 0.321091 0.637094 0.005747 0.036068 0.000000 0.000000
+      27   1   0   2   5   0     0     0      29.341484 0.999815 0.000183 0.000000 0.000000 0.000001 0.000000 0.000000
+      26   1   0   1   5   0     0     0      29.422384 1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+      25   1   0   0   5   0     0     0      29.997152 1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+      24   1   0   4   4   0     0     0      30.214490 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000
+      23   1   0   3   4   0     0     0      29.878841 0.000000 0.347800 0.633061 0.004320 0.014820 0.000000 0.000000
+      22   1   0   2   4   0     0     0      31.905000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 1.000000
+      21   1   0   1   4   0     0     0      29.517356 0.091512 0.000000 0.000000 0.000000 0.000000 0.000000 0.908488
+      20   1   1   0   4   0     0     0      30.013771 0.955205 0.000000 0.044795 0.000000 0.000000 0.000000 0.000000
+      19   1   0   4   3   0     0     0      30.185175 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000
+      18   1   0   3   3   0     0     0      29.836251 0.000000 0.401340 0.596417 0.001830 0.000414 0.000000 0.000000
+      17   1   0   2   3   0     0     0      29.365848 0.191603 0.000026 0.000000 0.000000 0.000000 0.808368 0.000003
+      16   1   0   1   3   0     0     0      29.353448 0.999360 0.000000 0.000000 0.000000 0.000000 0.000637 0.000004
+      15   1   2   0   3   0     0     0      31.959931 0.333333 0.333333 0.000000 0.000000 0.333333 0.000000 0.000000
+      14   1   0   4   2   0     0     0      30.624889 0.000000 0.000000 0.000049 0.000000 0.000000 0.999951 0.000000
+      13   1   0   3   2   0     0     0      31.905000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000
+      12   1   0   2   2   0     0     0      29.536297 0.001318 0.000000 0.000000 0.000000 0.998682 0.000000 0.000000
+      11   1   1   1   2   0     0     0      31.905000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000
+      10   1   3   0   2   0     0     0      29.898344 0.001485 0.000003 0.000000 0.998512 0.000000 0.000000 0.000000
+       9   1   0   4   1   0     0     0      30.074837 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000
+       8   1   0   3   1   0     0     0      30.520914 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000
+       7   1   0   2   1   0     0     0      29.732844 0.000005 0.000000 0.000000 0.999975 0.000020 0.000000 0.000000
+       6   1   2   1   1   0     0     0      31.905000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+       5   1   4   0   1   0     0     0      29.174053 1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+       4   1   0   4   0   0     0     0      30.001998 0.000000 0.000000 0.576417 0.000000 0.423583 0.000000 0.000000
+       3   1   0   3   0   0     0     0      30.947013 0.000000 0.000000 0.000000 0.999999 0.000001 0.000000 0.000000
+       2   1   0   2   0   0     0     0      29.074608 0.047371 0.000000 0.000000 0.004486 0.948132 0.000000 0.000011
+       1   1   3   1   0   0     0     0      31.137216 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000
+       0   1   4   0   0   0     0     0      31.905000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+     ------------------------------------------------------------------------------
+Checking if Pinfinity is correct. norm of delta: 0
+Tracking all actions, endogenous state and auxiliary variables
+ Predicted Moments for fixed group: 0
+    t           a           e           A
+    0      7.4752      0.0670      6.0558
+    1     10.9117     -0.0199      8.0131
+    2     14.6662     -0.1369     11.5097
+    3     17.9805     -0.0848     15.2870
+    4     22.3685     -0.0970     18.7053
+    5     27.0381     -0.0864     23.2681
+    6     32.6490     -0.1071     28.1215
+    7     39.5401     -0.1179     34.0066
+    8     47.8436     -0.1500     41.1988
+    9     57.8526     -0.1779     49.8612

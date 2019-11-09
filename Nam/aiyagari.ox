@@ -1,7 +1,7 @@
 #import "niqlow"
 
 class Aiyagari : ExtremeValue {
-	static const decl agrid = <0;1;2;4;6;8;10>;/*grid point on asset */
+	static const decl agrid = <0;1;2;4;6;8;10>;		/*grid point on asset */
 	static decl a, A, e, beta, sig, mu, M, N, rho, Z, E, r, w, sigma, pred, vi;
     Utility();			
     static Build();
@@ -25,7 +25,8 @@ Aiyagari::Build() {
 }
 
 Aiyagari::FeasibleActions(){
-	return AV(a) .<= AV(A)*(1+r) + Earn();
+	//return AV(a) .<= AV(A)*(1+r) + Earn();
+	return a.actual .<= AV(A)*(1+r) + Earn();
 	}
 
 Aiyagari::Earn(){
@@ -34,7 +35,7 @@ Aiyagari::Earn(){
 
 Aiyagari::Utility(){
  	decl u =  ( AV(A)*(1+r) + Earn() - AV(a) ).^(1 - sigma) / (1 - sigma) ;
-	return u; 									/*Sub out consumption from budget constraint*/
+	return u; 										/*Sub out consumption from budget constraint*/
 	}
 
 Aiyagari::Run(){
@@ -57,5 +58,5 @@ Aiyagari::Run(){
 	pred = new PathPrediction (0,"EY", 0, ErgodicDist);  //can change second 0 to vi for nested solution.
 	pred->Tracking(TrackAll);
     // confirm stationarity ... print 3 predictions , Two means print out
-	pred -> Predict(3,Two);
+	pred -> Predict(10,Two);
 }
