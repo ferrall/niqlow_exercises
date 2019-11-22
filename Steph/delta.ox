@@ -1,4 +1,3 @@
-#include "../../Documents/Github/niqlow/Steph/BLPMain.ox"
 
 delta(theta2)
 {
