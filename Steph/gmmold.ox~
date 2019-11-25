@@ -23,15 +23,15 @@ delta(theta2)
 
 		for (i=0; i=(ns-1); ++i)
 		{
-			num[][i] = deltaold + theta2[0].*v[i]*branded + theta2[1].*income[][i]*price;
+			num[][i] = deltaold + theta2[0].*v[i]*branded + theta2[1].*income[][i]*price
 		}
-		expnum=exp(num);
-		v = range(1, 38535,11);
+		expnum=exp(num)
+		v = range(1, 38535,11)
 		for (i=0; i=(ns-1))
 		{
-		  sjtind[][i] = expnum[v[i]]./(1+sumr(expnum[v[i]:v[i]+10]);
+		  sjtind[][i] = expnum[v[i]]./(1+sumr(expnum[v[i]:v[i]+10])
 		 }	
-		sjt = (1/ns).*sumc(sjtind);
+		sjt = (1/ns).*sumc(sjtind)
 		 
 		deltanew = deltaold + lnshare - log(sjt);
 		deltafp = deltanew;

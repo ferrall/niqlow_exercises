@@ -1,5 +1,5 @@
 #include "oxstd.h"
-#include "gmmnew.ox"
+#include "gmmold.ox"
 #import "maximize"
 
 main() {
@@ -7,5 +7,5 @@ main() {
 
  loaddata();
  decl 	theta2 = <0.7, 0.08>, fval ;
- MaxSimplex(gmmnew2,&theta2,&fval,0); 
+ MaxSimplex(gmmnew,&theta2,&fval,0); 
 }

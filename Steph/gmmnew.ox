@@ -18,7 +18,7 @@ delta(theta2)
 	} while(norm(df).>.01);
 	return deltaold;
 }
-gmm(theta2,af,g,h)
+gmmnew(theta2,af,g,h)
 {
 	decl theta1c , epsilon;
 	theta1c = AA*(BB*delta(theta2));
@@ -52,8 +52,8 @@ loaddata()
 	decl income = Data[][2:21];
 	decl price = Data[][25];
 	decl v = rann(20,1);
-	IP = income.*price;
-	VB = v.*branded;
+	IP = income'**price;
+	VB = v'**branded;
 	println("X1 ",moments(X1),"X2",moments(X2),"Z",moments(Z));
 
 	 Omega = Z*W*Z';
