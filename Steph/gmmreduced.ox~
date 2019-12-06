@@ -15,10 +15,11 @@ delta(theta2)
 		denom[] = 1+aggregatec(num,nbrn);
 		df[] = lnshare - log(meanr(num./(1+denom)));
 		deltaold += df;
+		println("num", "denom");
 	} while(norm(df).>.01);
 	return deltaold;
 }
-gmmnew(theta2,af,g,h)
+gmmreduced(theta2,af,g,h)
 {
 	decl theta1c , epsilon;
 	theta1c = AA*(BB*delta(theta2));
@@ -31,30 +32,30 @@ loaddata()
 {
 	decl Data;
 
-	Data = loadmat("BLP.in7");
+	Data = loadmat("BLP2.in7");
 
-	ns = 20; nmkt = 3504, nbrn=11; 
+	ns = 5; nmkt = 300, nbrn=4; 
 
 	nobs=rows(Data) ;
 
-	X1 = Data[][<25:26, 50:78>];
+	X1 = Data[][<10:12, 27:31>];
 
-	X2=Data[][<25, 67>];
+	X2=Data[][<10, 26>];
 
-	Z = Data[][<27, 29:58 ,65>];
+	Z = Data[][<12, 14:23 ,36>];
 
 
 	W = invertsym(Z'*Z);
 
-	util = Data[][64];
-	lnshare = Data[][60];
-	decl branded = Data[][67];
-	decl income = Data[][2:21];
-	decl price = Data[][25];
-	decl v = rann(20,1);
+	util = Data[][35];
+	lnshare = Data[][25];
+	decl branded = Data[][26];
+	decl income = Data[][2:6];
+	decl price = Data[][10];
+	decl v = rann(5,1);
 	IP = income.*price;
 	VB = v'.*branded;
-	println("X1 ",moments(X1),"X2",moments(X2),"Z",moments(Z));
+	println("X1 ",moments(X1),"X2",moments(X2),"Z",moments(Z), "W", moments(W));
 
 	 Omega = Z*W*Z';
 	 BB = X1'*Omega;

@@ -53,7 +53,7 @@ loaddata()
 	decl price = Data[][25];
 	decl v = rann(20,1);
 	IP = income.*price;
-	VB = v.*branded;
+	VB = v'.*branded;
 	println("X1 ",moments(X1),"X2",moments(X2),"Z",moments(Z));
 
 	 Omega = Z*W*Z';
