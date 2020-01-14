@@ -1,42 +1,49 @@
 #include "oxstd.h"
 
 decl Omega, AA, BB, nbrn, ns, nmkt, nobs, X1, X2, Z, theta1,
-		util, IP, VB, lnshare, W, theta2hat, theta2guess ;
+		util, IP, VB, lnshare, W, theta2hat, theta2guess,dmap ;
 
 
 delta(theta2)
 {
-	decl deltaold , num, denom, df;
+	decl deltaold , num, denom, df, it;
 
-	df = denom = num = zeros(nobs,1);
+	//df = denom = zeros(nobs,1);
 	deltaold = 	util;
-	do { 
-		num[] = exp(deltaold + theta2[0]*VB + theta2[1]*IP);
-		denom[] = 1+aggregatec(num,nbrn);
-		df[] = lnshare - log(meanr(num./(1+denom)));
+	it = 0;
+	println(theta2);
+	do {
+		num = exp(deltaold + theta2[0]*VB + theta2[1]*IP);
+	//	println(rows(num)," ",columns(num));
+		denom = 1+aggregatec(num,nbrn);
+		df = lnshare - log(meanr(num./(1+denom[dmap][])));
 		deltaold += df;
-		println("num", "denom");
-	} while(norm(df).>.01);
+		//println("|df|",norm(df),moments(df~num~denom));
+	//	println(it," ",theta2," ",df');
+	} while( (norm(df).>.001) && (++it<50) );
 	return deltaold;
 }
 gmmreduced(theta2,af,g,h)
 {
-	decl theta1c , epsilon;
-	theta1c = AA*(BB*delta(theta2));
-	epsilon = delta(theta2) - X1*theta1c;
+	decl theta1c , epsilon, dt2=delta(theta2);
+	theta1c = AA*(BB*dt2);
+	epsilon = dt2 - X1*theta1c;
 	af[0] = -epsilon'*Omega*epsilon;
-	return 1;
+	return !isnan(dt2);
 }
 
 loaddata()
 {
-	decl Data;
+	decl Data,i;
 
 	Data = loadmat("BLP2.in7");
 
-	ns = 5; nmkt = 300, nbrn=4; 
+	ns = 5; nbrn=4; 
 
 	nobs=rows(Data) ;
+	  dmap=<>;
+	for (i=0;i<	nobs/nbrn;++i)
+		dmap |= constant(i,nbrn,1);
 
 	X1 = Data[][<10:12, 27:31>];
 
@@ -56,7 +63,7 @@ loaddata()
 	IP = income.*price;
 	VB = v'.*branded;
 	println("X1 ",moments(X1),"X2",moments(X2),"Z",moments(Z), "W", moments(W));
-
+	
 	 Omega = Z*W*Z';
 	 BB = X1'*Omega;
 	 AA = BB*X1;
