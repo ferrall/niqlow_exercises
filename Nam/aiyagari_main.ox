@@ -1,4 +1,15 @@
 #include "aiyagari.ox"
-main() {
+
+main(){
+	decl econ, alg;
+	econ = new Eq(); 
+	alg = new NewtonRaphson(econ);
+	alg.Volume=LOUD;
     Aiyagari::Run();
+	alg -> Iterate();
+
     }
+
+
+//	rouwenhorst
+
