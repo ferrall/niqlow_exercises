@@ -20,7 +20,6 @@ Eq::vfunc() {
 	aggV[K] = Aiyagari::pred.flat[0][2];
 	decl sig2 = 1/(1-sqr(CV(Aiyagari::rho)));
     aggV[LL] = exp(sig2/2);
-	// aggV[LL] = exp(AV(e)) * Aiyagari::pred.flat[0][2]	;
 	return	MPSys() - CV(price);
 }
 
@@ -61,11 +60,14 @@ Aiyagari::Utility(){
 
 Aiyagari::Run(){
 	M = 2;
-	N = 5;											/* grid on labour shock */
+	N = 7;											/* grid on labour shock */
 	mu = 0;	 										/* mean on AR shock */
 	sig = 0.2; 										/* std on AR shock */
 	rho = 0.9; 										/* persistence of AR shock */
-	agrid = range(-3,5,0.1);
+	agrid = sqr(range(0,sqrt(20),0.1));		        /* doesnt work */
+/*	agrid = sqr(range(0,sqrt(20),0.05));			 doesnt work */
+/*	agrid = <0.2;0.22;0.24;0.26;0.28;0.30;0.32;0.34;0.36;0.38>;  work */
+ /*	agrid = range(0,2,0.08);						  works */
 	Z = columns(agrid);  										/* number grid on asset */
 	sigma = 2; 										/* CRRA parameter */
 	Initialize(20.0, new Aiyagari());					

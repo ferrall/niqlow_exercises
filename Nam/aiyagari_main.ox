@@ -7,9 +7,6 @@ main(){
 	alg.Volume=LOUD;
     Aiyagari::Run();
 	alg -> Iterate();
-
     }
 
-
-//	rouwenhorst
 
