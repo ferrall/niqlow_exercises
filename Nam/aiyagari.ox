@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+#import "niqlow"
+
+class Aiyagari : ExtremeValue {
+	static const decl agrid = <0;1;2;4;6;8;10>;		/*grid point on asset */
+	static decl a, A, e, beta, sig, mu, M, N, rho, Z, E, r, w, sigma, pred, vi;
+    Utility();			
+    static Build();
+    static Run();
+    static Earn();
+    static Use();
+	FeasibleActions();
+=======
 #include "aiyagari.h"
 
 Eq::MPSys(){
@@ -21,6 +34,7 @@ Eq::vfunc() {
 	decl sig2 = 1/(1-sqr(CV(Aiyagari::rho)));
     aggV[LL] = exp(sig2/2);
 	return	MPSys() - CV(price);
+>>>>>>> master
 }
 
 Aiyagari::Build() {
@@ -42,9 +56,14 @@ Aiyagari::Build() {
 
 
 Aiyagari::FeasibleActions(){
+<<<<<<< HEAD
+	//return AV(a) .<= AV(A)*(1+r) + Earn();
+	return a.actual .<= AV(A)*(1+r) + Earn();
+=======
 println("CV ",CV(Eq::price));
 	return AV(a) .<= AV(A)*(1+CV(Eq::price)[K]) + Earn();
 //	return a.actual .<= AV(A)*(1+r) + Earn();
+>>>>>>> master
 	}
 
 Aiyagari::Earn(){
@@ -53,9 +72,14 @@ Aiyagari::Earn(){
 	}
 
 Aiyagari::Utility(){
+<<<<<<< HEAD
+ 	decl u =  ( AV(A)*(1+r) + Earn() - AV(a) ).^(1 - sigma) / (1 - sigma) ;
+	return u; 										/*Sub out consumption from budget constraint*/
+=======
 /* 	decl u =  ( AV(A)*(1+CV(Eq::r)) + Earn() - AV(a) ).^(1 - sigma) / (1 - sigma) ;	  	*/
  	decl u =  ( AV(A)*(1+CV(Eq::price)[K]) + Earn() - AV(a) ).^(1 - sigma) / (1 - sigma) ;
 	return u; 									/*Sub out consumption from budget constraint*/
+>>>>>>> master
 	}
 
 Aiyagari::Run(){
@@ -81,4 +105,11 @@ Aiyagari::Run(){
     // confirm stationarity ... print 3 predictions , Two means print out
 	DPDebug::outV(TRUE);
     println("Checking if Pinfinity is correct. norm of delta: ", norm(I::curg.Ptrans*I::curg.Pinfinity - I::curg.Pinfinity));
+<<<<<<< HEAD
+	pred = new PathPrediction (0,"EY", 0, ErgodicDist);  //can change second 0 to vi for nested solution.
+	pred->Tracking(TrackAll);
+    // confirm stationarity ... print 3 predictions , Two means print out
+	pred -> Predict(10,Two);
+=======
+>>>>>>> master
 }
