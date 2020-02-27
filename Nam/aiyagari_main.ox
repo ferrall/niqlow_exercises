@@ -5,8 +5,10 @@ main(){
 	econ = new Eq(); 
 	alg = new NewtonRaphson(econ);
 	alg.Volume=LOUD;
-    Aiyagari::Run();
+    Agent::Build();
+	Eq::Interface();
 	alg -> Iterate();
+    econ->Report();
     }
 
 
