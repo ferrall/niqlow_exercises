@@ -15,10 +15,8 @@ struct P {
 	muM1   = 1-mu,
 	lam    = (1-delt)/delt,
 	alM1   = 1-alpha,
-//  MPco   = <alpha; alM1>,
-	MPco   = <alM1,alpha >,
-//	MPexp  = <-alM1; alpha>,
-	MPexp  = <-alpha,alM1>,
+	MPco   = <alpha; alM1>,
+	MPexp  = <-alM1; alpha>,
 	MPdep  = <0;deprec>;
 
 	}

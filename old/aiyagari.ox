@@ -1,12 +1,5 @@
 #include "aiyagari.h"
 
-/*
-Eq::MPSys(){
-	decl LtoK =  aggV[LL]/aggV[K];
-	return	P::MPco .* LtoK.^P::MPexp - P::MPdep;
-	}
-*/
-
 Eq::MPSys(){
 	decl LtoK =  aggV[LL]/aggV[K];
 	return	P::MPco .* LtoK.^P::MPexp - P::MPdep;
@@ -17,8 +10,10 @@ Eq::Eq(){
 	aggV = zeros(Nfactors,1);
 	price = new StDeviations("p_",0,{"w","r"});
 	Parameters(price);
-	Load();	
+	Load();
+	
     aggV[LL] = exp(0.5*sqr(P::sig)); // exp( 0.5/ ( 1-sqr(par[myrho]) ) );
+
 	Volume=QUIET;	
 }
 
@@ -41,12 +36,10 @@ Eq::Report() {
 //	println("\n\n ******** Agent Decisions ********");
 //	DPDebug::outV();
 	println("\n\n ******** Ergodic Means ********",pred.flat[0][1:]);
-    I::curg->StationaryDistribution();
-	println("Ergodic distribution: ",I::curg.Pinfinity');
 	}
 	
 Agent::Build() {
-	decl agrid = sqr(range(0,sqrt(20),0.1));
+	decl agrid = sqr(range(0,sqrt(20),0.05));
 	Initialize(new Agent());					
 		SetClock(Ergodic);	
 		Actions(a = new ActionVariable("a",columns(agrid)));
@@ -68,6 +61,4 @@ Agent::NetIncome() {  	   return AV(A)*(1+CV(Eq::price)[K]) + Earn() - AV(a);	}
 
 Agent::FeasibleActions(){	return NetIncome() .>= 0.0;	}	
 
-//Agent::Utility(){ 		   return (1/P::muM1)*(NetIncome().^P::muM1 - 1) ;	}
-
-Agent::Utility(){ 		   return (1/P::muM1)*(NetIncome().^P::muM1) ;	}
+Agent::Utility(){ 		   return (1/P::muM1)*(NetIncome().^P::muM1 - 1) ;	}

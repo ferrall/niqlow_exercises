@@ -1,0 +1,15 @@
+"Eq"
+"Eq"
+-4.9810718097055947e-16
+<2.3678978353748144;
+ 0.14183036524592871 >
+-------Human Readable Parameter Summary-------
+000	1	  2.367898	"p_:w           "	"Positive       "	0	1
+001	1	  0.141830	"p_:r           "	"Positive       "	1	1
+
+------------
+.NaN
+Hessian .NaN
+
+--------------------
+Created by Objective::Save().  1-03-2020. 14:37:22
