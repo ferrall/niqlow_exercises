@@ -15,12 +15,11 @@ struct P {
 	muM1   = 1-mu,
 	lam    = (1-delt)/delt,
 	alM1   = 1-alpha,
-//  MPco   = <alpha; alM1>,
-	MPco   = <alM1,alpha >,
-//	MPexp  = <-alM1; alpha>,
-	MPexp  = <-alpha,alM1>,
-	MPdep  = <0;deprec>;
-
+	MPco   = <alM1  ; alpha >,
+	MPexp  = <-alpha; alM1>,
+	MPdep  = <0;deprec>,
+	original_r = 0.041456,
+	original_savings = .2371;
 	}
 
 struct Eq:System {
@@ -32,8 +31,8 @@ struct Eq:System {
 	Report();
 	}
 
-class Agent : Bellman {
-	static const decl M = 2.0,		N = 7;  /* grid on labour shock */
+class Agent : ExPostSmoothing {
+	static const decl M = 3.0,		N = 7;  /* grid on labour shock */
 	static decl a, A, e;
 	FeasibleActions();
     Utility();			

@@ -1,12 +1,5 @@
 #include "aiyagari.h"
 
-/*
-Eq::MPSys(){
-	decl LtoK =  aggV[LL]/aggV[K];
-	return	P::MPco .* LtoK.^P::MPexp - P::MPdep;
-	}
-*/
-
 Eq::MPSys(){
 	decl LtoK =  aggV[LL]/aggV[K];
 	return	P::MPco .* LtoK.^P::MPexp - P::MPdep;
@@ -38,11 +31,12 @@ Eq::Report() {
 	vfunc();
 	println("Equilibrium Conditions at current prices:");
 	Print("Aiyagari",0,TRUE);
-//	println("\n\n ******** Agent Decisions ********");
-//	DPDebug::outV();
+	println("\n\n ******** Agent Decisions ********");
+	DPDebug::outV();
 	println("\n\n ******** Ergodic Means ********",pred.flat[0][1:]);
-    I::curg->StationaryDistribution();
-	println("Ergodic distribution: ",I::curg.Pinfinity');
+	println("\n\n implied savings rate: ",P::alpha * P:: deprec / (CV(price)[LL]+P::deprec), "reported : ",P::original_savings);
+//    I::curg->StationaryDistribution();
+//	println("Ergodic distribution: ",I::curg.Pinfinity');
 	}
 	
 Agent::Build() {
@@ -55,7 +49,7 @@ Agent::Build() {
 		a -> SetActual(agrid);						
 		A -> SetActual(agrid);
 		EndogenousStates(e,A);
-	CreateSpaces();
+	CreateSpaces(LogitKernel,30.0);
     SetDelta(P::delt);
 	println(" Actual Asset Nodes ",agrid);
 	println("Tauchen Transition Matrix. Column is current v, row is trans. prob. ",e.Grid');
@@ -68,6 +62,4 @@ Agent::NetIncome() {  	   return AV(A)*(1+CV(Eq::price)[K]) + Earn() - AV(a);	}
 
 Agent::FeasibleActions(){	return NetIncome() .>= 0.0;	}	
 
-//Agent::Utility(){ 		   return (1/P::muM1)*(NetIncome().^P::muM1 - 1) ;	}
-
-Agent::Utility(){ 		   return (1/P::muM1)*(NetIncome().^P::muM1) ;	}
+Agent::Utility(){ 		   return (1/P::muM1)*(NetIncome().^P::muM1 - 1) ;	}

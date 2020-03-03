@@ -7,7 +7,7 @@ main(){
 	alg.Volume=LOUD;
     Agent::Build();
 	Eq::Interface();
-	alg -> Iterate();
+//	alg -> Iterate();
     econ->Report();
     }
 
