@@ -20,23 +20,26 @@ struct P {
 	MPdep  = <0;deprec>,
 	original_r = 0.041456,
 	original_savings = .2371;
+	static Wage();
 	}
 
-struct Eq:System {
-	static decl aggV, price, pred, vi ;
+struct Eq:OneDimSystem {
+	static decl aggV, price, pred, vi,LtoK, MP ;
 	Eq();
 	static Interface();
-	static MPSys();
 	vfunc();
 	Report();
 	}
 
 class Agent : ExPostSmoothing {
-	static const decl M = 3.0,		N = 7;  /* grid on labour shock */
+	static const decl
+		M = 2.0,
+		N = 7,
+		KSS=82.5,
+		kstep=0.1;  /* grid on labour shock */
 	static decl a, A, e;
 	FeasibleActions();
     Utility();			
     static Build();
-    static Earn();
 	static NetIncome();
 }

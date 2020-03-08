@@ -1,15 +1,13 @@
 "Eq"
 "Eq"
-.Inf
-<0.056476564171668286;
- 0.031 >
+-.Inf
+<0.02145599108309863 >
 -------Human Readable Parameter Summary-------
-000	1	  0.564766	"p_:w           "	"Positive       "	0	1.02365
-001	1	  0.043849	"p_:r           "	"Positive       "	1	1.00037
+000	1	  0.041456	"r              "	"BoundedAbove   "	0	0.999995
 
 ------------
-.NaN
-Hessian .NaN
+r.NaN
+Hessian rr.NaN
 
 --------------------
-Created by Objective::Save().  2-03-2020. 18:19:06
+Created by Objective::Save().  4-03-2020. 18:51:40

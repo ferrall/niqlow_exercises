@@ -1,0 +1,13 @@
+"Eq"
+"Eq_r"
+-2.615756680322497e-010
+<0.047389245410680292 >
+-------Human Readable Parameter Summary-------
+000	1	  0.047389	"r              "	"BoundedAbove   "	0	1
+
+------------
+r.NaN
+Hessian rr.NaN
+
+--------------------
+Created by Objective::Save().  6-03-2020. 18:32:52
