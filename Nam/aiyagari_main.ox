@@ -3,12 +3,12 @@
 main(){
 	decl econ, alg;
 	econ = new Eq(); 
-//	alg = new NewtonRaphson(econ);
 	alg = new OneDimRoot(econ);
-	DP::Volume=alg.Volume=QUIET;
+	//DP::Volume=
+	alg.Volume=LOUD;
 	Eq::Interface();
-//	alg -> Iterate(0.1,15);
-    econ->Report();
+	alg -> Iterate(0,0,1E-9);
+//    econ->Report();
     }
 
 

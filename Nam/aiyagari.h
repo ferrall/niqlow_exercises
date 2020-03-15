@@ -3,9 +3,9 @@
 	enum{LL,K,Nfactors}
 	enum{Kcol=2}
 
+			//Table II, panel A, top row, middle column
 struct P {
 	static const decl 
-			//Table II, panel A, top row, middle column
 	alpha  = 0.36,
 	sig	   = 0.2,
 	rho	   = 0.0,

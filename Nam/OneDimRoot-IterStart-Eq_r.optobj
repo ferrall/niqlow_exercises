@@ -1,13 +1,15 @@
 "Eq"
 "Eq_r"
--2.615756680322497e-010
-<0.047389245410680292 >
+4.6521296163501016e-014
+<1.1480526124464308;
+ 0.047389849861505073 >
 -------Human Readable Parameter Summary-------
-000	1	  0.047389	"r              "	"BoundedAbove   "	0	1
+000	0	  1.148053	"w              "	"Determined     "	-1	.NaN
+001	1	  0.047390	"r              "	"BoundedAbove   "	1	1
 
 ------------
 r.NaN
 Hessian rr.NaN
 
 --------------------
-Created by Objective::Save().  6-03-2020. 18:32:52
+Created by Objective::Save(). 15-03-2020. 12:32:37

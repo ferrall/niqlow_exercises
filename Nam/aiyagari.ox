@@ -4,10 +4,10 @@ Eq::Eq(){
 	OneDimSystem("Eq_r"); //System("Eq",One);
 	aggV = zeros(Nfactors,1);
 	price = new array[Nfactors];
-	price[K] = new BoundedAbove("r",3*P::lam,0.03);
-	Parameters(price[K]);
+	price[K] = new BoundedAbove("r",0.5,0.03);
+	price[LL] = new Determined("w",P::Wage);
+	Parameters(price);
 	Load();	
-	price[LL] = P::Wage();
 	Volume=QUIET;	
 }
 
@@ -15,6 +15,7 @@ Eq::Interface() {		//called after state space created
 	DP::Volume = SILENT;
 	Agent::Build();
 	vi = new ValueIteration();
+	vi.vtoler = DIFF_EPS;
 	pred = new PathPrediction (0,vi, ErgodicDist); 
 	pred->Tracking(UseLabel,Agent::A,Agent::e);	
 	}
@@ -24,7 +25,6 @@ P::Wage() {
 	}
 
 Eq::vfunc() {
-	price[LL] = P::Wage();
 	pred -> Predict(1,0);
     aggV[LL] = exp(0.5*sqr(P::sig)); // exp( 0.5/ ( 1-sqr(par[myrho]) ) );
 	aggV[K] = pred.flat[0][Kcol];
