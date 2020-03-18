@@ -1,6 +1,6 @@
 #include "oxstd.h"
 
-decl Omega, AA, BB, nbrn, ns, nmkt, nobs, X1, X2, Z, theta1,
+decl Omega, AA, BB, CC, nbrn, ns, nmkt, nobs, X1, X2, Z, theta1,
 		util, IP, VB, lnshare, W, theta2hat, theta2guess ;
 
 
@@ -21,7 +21,7 @@ delta(theta2)
 gmmnew(theta2,af,g,h)
 {
 	decl theta1c , epsilon;
-	theta1c = AA*(BB*delta(theta2));
+	theta1c = CC*(BB*delta(theta2));
 	epsilon = delta(theta2) - X1*theta1c;
 	af[0] = -epsilon'*Omega*epsilon;
 	return 1;
@@ -59,4 +59,5 @@ loaddata()
 	 Omega = Z*W*Z';
 	 BB = X1'*Omega;
 	 AA = BB*X1;
+	 CC = invert(AA);
 }
