@@ -7,8 +7,9 @@ main(){
 	//DP::Volume=
 	alg.Volume=LOUD;
 	Eq::Interface();
-	alg -> Iterate(0,0,1E-9);
-//    econ->Report();
+//	alg -> Iterate(0,0,1E-9);
+	alg -> Iterate(0,0,1E-6);
+    econ->Report();
     }
 
 

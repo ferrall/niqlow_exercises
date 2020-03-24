@@ -1,0 +1,531 @@
+---------------------------------------------------
+
+Report of Aiyagari on Eq_r
+
+   Obj=        0.00191824206387
+Free Parameters
+         index          free      
+r          1    0.981093750000
+Actual Parameters
+                  Value 
+w          1.18422123580
+r        0.0405552938998
+
+
+ ******** Ergodic Means ********
+      0.00000       78.319   2.1684e-16
+
+
+ implied savings rate: 0.238895
+ rho: 0 sig: 0.4 mu: 1
+
+---------------------------------------------------
+
+Report of Aiyagari on Eq_r
+
+   Obj=        0.00834841979441
+Free Parameters
+         index          free      
+r          1     1.00351562500
+Actual Parameters
+                  Value 
+w          1.14171605002
+r        0.0486494824098
+
+
+ ******** Ergodic Means ********
+      0.00000      0.20461   7.8063e-18
+
+
+ implied savings rate: 0.223864
+ rho: 0 sig: 0.4 mu: 4
+
+Likely to be wrong: agents are clustered around one point. 
+
+No error though. 
+
+
+
+------------ KSS = 40, step = 0.05 ------------------------
+
+Report of Aiyagari on Eq_r
+
+   Obj=       1.67580262812e-06
+Free Parameters
+         index          free      
+r          1    0.972313670069
+Actual Parameters
+                  Value 
+w          1.20232962801
+r        0.0373463209622
+
+
+ ******** Ergodic Means ********
+      0.00000       6.3581   4.1757e-18
+
+
+ implied savings rate: 0.245427
+ rho: 0 sig: 0.4 mu: 3
+
+-----------------------------------------------------------------
+
+Report of Aiyagari on Eq_r
+
+   Obj=       1.18775432640e-06
+Free Parameters
+         index          free      
+r          1    0.963164062500
+Actual Parameters
+                  Value 
+w          1.22218613703
+r        0.0339784417629
+
+
+ ******** Ergodic Means ********
+      0.00000       6.6935   2.3241e-16
+
+
+ implied savings rate: 0.252679
+ rho: 0 sig: 0.4 mu: 5
+
+----------------------------------------------------------------
+
+Report of Aiyagari on Eq_r
+
+   Obj=       1.85469160311e-06
+Free Parameters
+         index          free      
+r          1    0.980602523759
+Actual Parameters
+                  Value 
+w          1.18521114304
+r        0.0403763481268
+
+
+ ******** Ergodic Means ********
+      0.00000       5.8950  -6.5604e-16
+
+
+ implied savings rate: 0.23925
+ rho: 0 sig: 0.4 mu: 1
+
+---------------------------------------------------------------------
+
+   Obj=       2.32960336325e-07
+Free Parameters
+         index          free      
+r          1    0.979599609375
+Actual Parameters
+                  Value 
+w          1.18724055337
+r        0.0400107862044
+
+
+ ******** Ergodic Means ********
+      0.00000       6.0662  -1.4578e-17
+
+
+ implied savings rate: 0.239978
+ rho: 0.3 sig: 0.4 mu: 1
+
+---------------------------------------------------------------------
+Report of Aiyagari on Eq_r
+
+   Obj=       8.99264405260e-06
+Free Parameters
+         index          free      
+r          1    0.983910827637
+Actual Parameters
+                  Value 
+w          1.17859568199
+r        0.0415801651366
+
+
+ ******** Ergodic Means ********
+      0.00000       5.3485   1.2015e-15
+
+
+ implied savings rate: 0.236881
+ rho: 0.3 sig: 0.2 mu: 1
+
+-----------------------------------------------------------------------
+Report of Aiyagari on Eq_r
+
+   Obj=       2.97271492785e-06
+Free Parameters
+         index          free      
+r          1    0.983096272947
+Actual Parameters
+                  Value 
+w          1.18021338153
+r        0.0412840599976
+
+
+ ******** Ergodic Means ********
+      0.00000       5.8663  -1.1047e-15
+
+
+ implied savings rate: 0.237459
+ rho: 0.3 sig: 0.2 mu: 3
+
+----------------------------------------------------------------------
+Report of Aiyagari on Eq_r
+
+   Obj=       1.62695795814e-06
+Free Parameters
+         index          free      
+r          1    0.981843414307
+Actual Parameters
+                  Value 
+w          1.18271568714
+r        0.0408282501972
+
+
+ ******** Ergodic Means ********
+      0.00000       5.7111  -1.3783e-15
+
+
+ implied savings rate: 0.238355
+ rho: 0.3 sig: 0.2 mu: 5
+
+---------------------------------------------------------------------------
+
+Report of Aiyagari on Eq_r
+
+   Obj=       8.79330336272e-07
+Free Parameters
+         index          free      
+r          1    0.980595703125
+Actual Parameters
+                  Value 
+w          1.18522490672
+r        0.0403738629896
+
+
+ ******** Ergodic Means ********
+      0.00000       5.7198  -9.4349e-16
+
+
+ implied savings rate: 0.239255
+ rho: 0.6 sig: 0.2 mu: 3
+
+---------------------------------------------------------------------------------
+
+Report of Aiyagari on Eq_r
+
+   Obj=       1.54321961672e-07
+Free Parameters
+         index          free      
+r          1    0.971796875000
+Actual Parameters
+                  Value 
+w          1.20342361099
+r        0.0371567440625
+
+
+ ******** Ergodic Means ********
+      0.00000       5.9573  -2.0872e-14
+
+
+ implied savings rate: 0.245825
+ rho: 0.9 sig: 0.2 mu: 3
+
+----------------------------------------------------------------------------------
+
+Report of Aiyagari on Eq_r
+
+   Obj=       1.31105792632e-07
+Free Parameters
+         index          free      
+r          1    0.961005859375
+Actual Parameters
+                  Value 
+w          1.22702576864
+r        0.0331804618513
+
+
+ ******** Ergodic Means ********
+      0.00000       6.1905  -1.6671e-14
+
+
+ implied savings rate: 0.254461
+ rho: 0.9 sig: 0.2 mu: 5
+
+
+---------------------------------------------------------------------------------
+
+Report of Aiyagari on Eq_r
+
+   Obj=       5.78293812584e-05
+Free Parameters
+         index          free      
+r          1    0.983750000000
+Actual Parameters
+                  Value 
+w          1.17891451379
+r        0.0415217165736
+
+
+ ******** Ergodic Means ********
+      0.00000       7.5696  -3.4407e-16
+
+
+ implied savings rate: 0.236995
+ rho: 0 sig: 0.2 mu: 5
+
+------------------------------------------------------------------------------
+
+Report of Aiyagari on Eq_r
+
+   Obj=       8.62799858824e-06
+Free Parameters
+         index          free      
+r          1    0.983909662366
+Actual Parameters
+                  Value 
+w          1.17859799107
+r        0.0415797416764
+
+
+ ******** Ergodic Means ********
+      0.00000       5.3594   3.8604e-15
+
+
+ implied savings rate: 0.236882
+ rho: 0 sig: 0.2 mu: 3
+
+------------------------------------------------------------------------------
+Report of Aiyagari on Eq_r
+
+   Obj=       3.26066078736e-08
+Free Parameters
+         index          free      
+r          1    0.960507812500
+Actual Parameters
+                  Value 
+w          1.22815137061
+r        0.0329961186810
+
+
+ ******** Ergodic Means ********
+      0.00000       6.6065  -3.5994e-16
+
+
+ implied savings rate: 0.254876
+ rho: 0.6 sig: 0.4 mu: 3
+
+----------------------------------------------------------------------------------
+
+Report of Aiyagari on Eq_r
+
+   Obj=       7.03047867440e-07
+Free Parameters
+         index          free      
+r          1    0.939257812500
+Actual Parameters
+                  Value 
+w          1.27948587228
+r        0.0250626235196
+
+
+ ******** Ergodic Means ********
+      0.00000       7.2834  -3.6326e-16
+
+
+ implied savings rate: 0.274122
+ rho: 0.6 sig: 0.4 mu: 5
+
+
+------------------------------------------------------------------------
+
+Report of Aiyagari on Eq_r
+
+   Obj=       2.24624407996e-07
+Free Parameters
+         index          free      
+r          1    0.956357421875
+Actual Parameters
+                  Value 
+w          1.23766196643
+r        0.0314570919215
+
+
+ ******** Ergodic Means ********
+      0.00000       6.8116   1.1080e-15
+
+
+ implied savings rate: 0.258395
+ rho: 0.3 sig: 0.4 mu: 5
+
+----------------------------------------------------------------------
+
+Report of Aiyagari on Eq_r
+
+   Obj=       1.01916134775e-09
+Free Parameters
+         index          free      
+r          1    0.968559570312
+Actual Parameters
+                  Value 
+w          1.21035039060
+r        0.0359674288597
+
+
+ ******** Ergodic Means ********
+      0.00000       6.3625  -1.1489e-15
+
+
+ implied savings rate: 0.248346
+ rho: 0.3 sig: 0.4 mu: 3
+
+-------------------------------------------------------------------
+
+
+Report of Aiyagari on Eq_r
+
+   Obj=       7.55802314371e-08
+Free Parameters
+         index          free      
+r          1    0.933281250000
+Actual Parameters
+                  Value 
+w          1.29520057911
+r        0.0228071429731
+
+
+ ******** Ergodic Means ********
+      0.00000       7.6700  -6.9085e-14
+
+
+ implied savings rate: 0.280136
+ rho: 0.9 sig: 0.4 mu: 3
+
+-----------------------------------------------------------------------
+
+Report of Aiyagari on Eq_r
+
+   Obj=       4.11834676467e-05
+Free Parameters
+         index          free      
+r          1    0.786250000000
+Actual Parameters
+                  Value 
+w          2.09255749173
+r       -0.0361832247257
+
+
+ ******** Ergodic Means ********
+      0.00000       5.1447  -1.0454e-13
+
+
+ implied savings rate: 0.657283
+ rho: 0.9 sig: 0.4 mu: 5
+
+
+----------------------------------------------------------------------
+
+Report of Aiyagari on Eq_r
+
+   Obj=       1.42143821737e-08
+Free Parameters
+         index          free      
+r          1    0.977482910156
+Actual Parameters
+                  Value 
+w          1.19156096146
+r        0.0392382954592
+
+
+ ******** Ergodic Means ********
+      0.00000       6.0798  -2.7386e-17
+
+
+ implied savings rate: 0.241533
+ rho: 0.6 sig: 0.4 mu: 1
+
+
+------------------------------------------------------------------------
+
+Report of Aiyagari on Eq_r
+
+   Obj=       9.79515146107e-10
+Free Parameters
+         index          free      
+r          1    0.970468750000
+Actual Parameters
+                  Value 
+w          1.20624987081
+r        0.0366691890734
+
+
+ ******** Ergodic Means ********
+      0.00000       6.2789  -8.1411e-16
+
+
+ implied savings rate: 0.246852
+ rho: 0.9 sig: 0.4 mu: 1
+
+-------------------------------------------------------------------
+
+Report of Aiyagari on Eq_r
+
+   Obj=       3.18500771997e-07
+Free Parameters
+         index          free      
+r          1    0.980761718750
+Actual Parameters
+                  Value 
+w          1.18489004321
+r        0.0404343479189
+
+
+ ******** Ergodic Means ********
+      0.00000       5.6875   6.3799e-16
+
+
+ implied savings rate: 0.239134
+ rho: 0.9 sig: 0.2 mu: 1
+
+
+-------------------------------------------------------------------
+
+Report of Aiyagari on Eq_r
+
+   Obj=       9.85001722229e-07
+Free Parameters
+         index          free      
+r          1    0.983293457031
+Actual Parameters
+                  Value 
+w          1.17982111375
+r        0.0413557574659
+
+
+ ******** Ergodic Means ********
+      0.00000       5.5085  -3.1869e-16
+
+
+ implied savings rate: 0.237319
+ rho: 0.6 sig: 0.2 mu: 1
+
+
+-----------------------------------------------------------------
+
+Report of Aiyagari on Eq_r
+
+   Obj=       4.08216452006e-06
+Free Parameters
+         index          free      
+r          1    0.984152069092
+Actual Parameters
+                  Value 
+w          1.17811795918
+r        0.0416678240102
+
+
+ ******** Ergodic Means ********
+      0.00000       5.8770   3.6421e-15
+
+
+ implied savings rate: 0.23671
+ rho: 0 sig: 0.2 mu: 1

@@ -38,12 +38,13 @@ Eq::vfunc() {
 
 Eq::Report() {
 	vfunc();
-	println("\n\n ******** Agent Decisions ********");
-	DPDebug::outV(TRUE,0,TRUE,TRUE,TRUE); //only print index of max not CCPs
+//	println("\n\n ******** Agent Decisions ********");
+//	DPDebug::outV(TRUE,0,TRUE,TRUE,TRUE); //only print index of max not CCPs
 	println("Equilibrium Conditions at current prices:");
 	Print("Aiyagari",0,TRUE);
 	println("\n\n ******** Ergodic Means ********",pred.flat[0][1:]);
-	println("\n\n implied savings rate: ",P::alpha * P:: deprec / (CV(price[K])+P::deprec), " reported : ",P::original_savings);
+	println("\n\n implied savings rate: ",P::alpha * P:: deprec / (CV(price[K])+P::deprec));
+	println(" rho: ",P::rho, " sig: ",P::sig, " mu: ", P::mu );
 	}
 	
 Agent::Build() {
@@ -55,9 +56,9 @@ Agent::Build() {
 		A = new LiquidAsset ( "A" , columns(agrid) , a )	;	
 		a -> SetActual(agrid);						
 		A -> SetActual(agrid);
-		EndogenousStates(e,A);
-	CreateSpaces(LogitKernel,30.0); 		//
-    SetDelta(P::delt);//
+		EndogenousStates(e,A);		
+ 	CreateSpaces();
+    SetDelta(P::delt); 
 	if (Volume>QUIET) {
 		println(" Actual Asset Nodes ",agrid);
 		println("Tauchen Transition Matrix. Column is current v, row is trans. prob. ",e.Grid');
@@ -67,6 +68,11 @@ Agent::Build() {
 
 Agent::NetIncome() {  	   return AV(A)*(1+CV(Eq::price[K])) +  CV(Eq::price[LL])*exp(AV(e)) - AV(a);	}
 
-Agent::FeasibleActions(){	return NetIncome() .>= 0.0;	}	
+Agent::FeasibleActions(){	return NetIncome() .>= 0.0;	}
 
-Agent::Utility(){ 		   return (1/P::muM1)*(NetIncome().^P::muM1 - 1) ;	}
+Agent::Utility(){
+	if (P::mu==1)
+	return log( NetIncome()  );
+	else
+	return (1/(1 - P::mu))*(NetIncome().^(1-P::mu) - 1 ) ;
+}

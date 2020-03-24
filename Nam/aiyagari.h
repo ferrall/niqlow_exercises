@@ -7,9 +7,9 @@
 struct P {
 	static const decl 
 	alpha  = 0.36,
-	sig	   = 0.2,
-	rho	   = 0.0,
-	mu	   = 3.0,
+	sig	   = 0.4,
+	rho	   = 0.9,
+	mu	   = 5,
 	delt   = 0.96,
 	deprec = 0.08,
 	muM1   = 1-mu,
@@ -35,8 +35,8 @@ class Agent : ExPostSmoothing {
 	static const decl
 		M = 2.0,
 		N = 7,
-		KSS=82.5,
-		kstep=0.1;  /* grid on labour shock */
+	    KSS = 40,
+		kstep=0.05; 
 	static decl a, A, e;
 	FeasibleActions();
     Utility();			

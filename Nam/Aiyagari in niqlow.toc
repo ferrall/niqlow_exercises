@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Brief introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{Model}{4}{0}{2}
+\beamer@sectionintoc {3}{Algorithm}{13}{0}{3}
+\beamer@sectionintoc {4}{Aiyagari in niqlow}{17}{0}{4}
